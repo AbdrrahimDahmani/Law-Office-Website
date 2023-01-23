@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/homeStyle.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/fontawesome.min.css" />
+    <script defer src="./js/homeScript.js"></script>
+
+</head>
+
+<body>
+    <!--
+        ? navBar Start
+    -->
+    <nav class="navbar_container">
+        <a href="#" class="navbar_logo">
+            <span>LOGO</span>
+            <i class="fa-solid fa-gavel"></i>
+        </a>
+        <div id="sidebar" class="navbar">
+            <ul>
+                <li>
+                    <a href="#Header">Home</a>
+                </li>
+                <li>
+                    <a href="#About">About</a>
+                </li>
+                <li>
+                    <a href="#Services">Services</a>
+                </li>
+            </ul>
+            <div class="sign_container">
+                <a href="login.php"><button>Login</button></a>
+                <a href="signup.php"><button>signup</button></a>
+            </div>
+        </div>
+        <div class="phone-menu" id="toggle"></div>
+    </nav>
+    <!--
+        ? navBar End
+    -->
+    <!--*************************************** -->
+    <!--
+        ? Header Start
+    -->
+
+    <header id="Header" class="header-container">
+        <div class="header-content">
+            <h1>The Best Law Expert In the Area</h1>
+
+            <p>
+                We specialise in corporate law, litigation, commercial and residential property.
+            </p>
+            <button>Consult Now!</button>
+        </div>
+    </header>
+
+    <!--
+        ? Header End
+    -->
+
+    <!--
+      ? first section  EXPERTISE start
+    -->
+
+    <div id="Services" class="expertise__section-container">
+        <h1 class="section-header">
+            FIELDS OF EXPERTISE
+            <i class="fa-sharp fa-solid fa-certificate"></i>
+        </h1>
+
+        <div class="expertise-container">
+            <!--? first expertise -->
+            <div class="expertise-box">
+                <div class="expertise-image">
+                    <img src="./images/maintt.jpg" alt="" />
+                    <div class="expertise-sign">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                </div>
+                <div class="expertise-infos">
+                    <h1>BANKING AND FINANCE</h1>
+                    <p>
+                        Override the digital divide with additional clickthroughs from DevOps along the information
+                        highway will close.
+                    </p>
+                </div>
+            </div>
+            <!--? second expertise -->
+            <div class="expertise-box">
+                <div class="expertise-image">
+                    <img src="./images/maintt.jpg" alt="" />
+                    <div class="expertise-sign">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                </div>
+                <div class="expertise-infos">
+                    <h1>BANKING AND FINANCE</h1>
+                    <p>
+                        Override the digital divide with additional clickthroughs from DevOps along the information
+                        highway will close.
+                    </p>
+                </div>
+            </div>
+            <!--? third expertise -->
+
+            <div class="expertise-box">
+                <div class="expertise-image">
+                    <img src="./images/maintt.jpg" alt="" />
+                    <div class="expertise-sign">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                </div>
+                <div class="expertise-infos">
+                    <h1>BANKING AND FINANCE</h1>
+                    <p>
+                        Override the digital divide with additional clickthroughs from DevOps along the information
+                        highway will close.
+                    </p>
+                </div>
+            </div>
+            <!--? fourth expertise -->
+            <div class="expertise-box">
+                <div class="expertise-image">
+                    <img src="./images/maintt.jpg" alt="" />
+                    <div class="expertise-sign">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                </div>
+                <div class="expertise-infos">
+                    <h1>BANKING AND FINANCE</h1>
+                    <p>
+                        Override the digital divide with additional clickthroughs from DevOps along the information
+                        highway will close.
+                    </p>
+                </div>
+            </div>
+            <!--? fifth expertise -->
+            <div class="expertise-box">
+                <div class="expertise-image">
+                    <img src="./images/maintt.jpg" alt="" />
+                    <div class="expertise-sign">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                </div>
+                <div class="expertise-infos">
+                    <h1>BANKING AND FINANCE</h1>
+                    <p>
+                        Override the digital divide with additional clickthroughs from DevOps along the information
+                        highway will close.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+      ? first section  EXPERTISE end
+    -->
+
+    <!--
+      ? second section  about start
+    -->
+    <div id="About" class="about__section-container">
+        <h1 class="section-header">
+            About Us
+            <i class="fa-solid fa-circle-info"></i>
+        </h1>
+        <div class="about-container">
+            <div class="about__left">
+                <p>
+                    Business law firm which renders advice on a full range of law matters
+                </p>
+
+                <div class="about__left-content">
+                    <!--
+              ? first left about 
+            -->
+                    <div class="first__left-about">
+                        <i class="fa-solid fa-suitcase"></i>
+
+                        <div class="about__left-infos">
+                            <h1>ATTORNEYS AT LAW</h1>
+                            <p>
+                                Collaboratively administrate empowered markets via plug-and-play networks.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--
+              ? second left about 
+            -->
+                    <div class="first__left-about">
+                        <i class="fa-solid fa-book"></i>
+
+                        <div class="about__left-infos">
+                            <h1>AND JUSTICE FOR ALL</h1>
+                            <p>
+                                Dramatically visualize customer directed convergence without revolutionary ROI.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about__right">
+                <div class="top__divs">
+                    <div class="first__div">
+                        <i class="fa-sharp fa-solid fa-ribbon"></i>
+                        <p>25</p>
+                        <p>STAFF MEMBERS</p>
+                    </div>
+                    <div class="second__div">
+                        <i class="fa-solid fa-gavel"></i>
+                        <p>655</p>
+                        <p>CASES SOLVED</p>
+                    </div>
+                </div>
+                <div class="bottom__divs">
+                    <div class="third__div">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <p>40</p>
+                        <p>TRUSTED PARTNERS</p>
+                    </div>
+                    <div class="fourth__div">
+                        <i class="fa-sharp fa-solid fa-trophy"></i>
+                        <p>15</p>
+                        <p>TOP 10 LAW FIRMS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+      ? second section  about end
+    -->
+
+    <!--
+      ? third section  members start
+    -->
+    <div class="members__container-section">
+        <h1 class="section-header">
+            Members
+            <i class="fa-solid fa-people-group"></i>
+        </h1>
+        <div class="members__container">
+            <h1>
+                At <span>WEBSITENAME</span>, we are driven by<br /> the shared vision of
+                <span>success, not fees.</span>
+            </h1>
+            <div class="members">
+                <!--? first member -->
+
+                <div class="member-card">
+                    <div class="member-image">
+                        <img width="200px" src="./images/member.jpg" alt="" />
+                        <div class="member-sign">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="member-infos">
+                        <h1>JOHN LEGEND</h1>
+                        <p>Commercial Law</p>
+                        <div class="socials">
+                            <a href="#">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="mailto:someone@example.com">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--? second member -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img width="200px" src="./images/member.jpg" alt="" />
+                        <div class="member-sign">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="member-infos">
+                        <h1>JOHN LEGEND</h1>
+                        <p>Commercial Law</p>
+                        <div class="socials">
+                            <a href="#">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="mailto:someone@example.com">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--? third member -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img width="200px" src="./images/member.jpg" alt="" />
+                        <div class="member-sign">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="member-infos">
+                        <h1>JOHN LEGEND</h1>
+                        <p>Commercial Law</p>
+                        <div class="socials">
+                            <a href="#">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="mailto:someone@example.com">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--? fourth member -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img width="200px" src="./images/member.jpg" alt="" />
+                        <div class="member-sign">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="member-infos">
+                        <h1>JOHN LEGEND</h1>
+                        <p>Commercial Law</p>
+                        <div class="socials">
+                            <a href="#">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="mailto:someone@example.com">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--? fifth member -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img width="200px" src="./images/member.jpg" alt="" />
+                        <div class="member-sign">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="member-infos">
+                        <h1>JOHN LEGEND</h1>
+                        <p>Commercial Law</p>
+                        <div class="socials">
+                            <a href="#">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="mailto:someone@example.com">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+      ? third section  members end
+    -->
+
+    <!--
+      ? fourth section  CONTACT start
+    -->
+    <div class="contact__container-section">
+        <h1 class="section-header">
+            Contact Us
+            <i class="fa-solid fa-location-dot"></i>
+        </h1>
+        <div class="contact__containe">
+            <div class="left__contact-section"></div>
+            <div class="right-section"></div>
+        </div>
+    </div>
+    <!--
+      ? fourth section  CONTACT end
+    -->
+
+    <!--
+      ? Footer section start
+    -->
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="web-infos">
+                <a href="#" class="navbar_logo">
+                    <span>LOGO</span>
+                    <i class="fa-solid fa-gavel"></i>
+                </a>
+                <div class="follow">
+                    <h3>Follow Us:</h3>
+                    <div class="footer-socials">
+                        <a href=""><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <p class="copy-right">Copyright © <span>WEBSITENAME</span> 2022</p>
+            </div>
+            <div class="services">
+                <h2>Services</h2>
+                <a href="#">service1</a>
+                <a href="#">service2</a>
+                <a href="#">service3</a>
+                <a href="#">service4</a>
+            </div>
+            <div class="links">
+                <h2>Useful Links</h2>
+                <a href="#">Link1</a>
+                <a href="#">Link2</a>
+                <a href="#">Link3</a>
+                <a href="#">Link4</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--
+      ? Footer section end
+    -->
+
+</body>
+
+</html>
