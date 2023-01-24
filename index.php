@@ -1,3 +1,7 @@
+<?php
+include('./connection/connexion.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +21,7 @@
     <!--
         ? navBar Start
     -->
+
     <nav class="navbar_container">
         <a href="#" class="navbar_logo">
             <span>LOGO</span>
@@ -34,10 +39,23 @@
                     <a href="#Services">Services</a>
                 </li>
             </ul>
+            <?php
+            if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
+            ?>
+            <div class="profile">
+                <img src="./images/profile.avif" alt="profile pic">
+                <a href="profile.php"><?php echo $_SESSION['nom']; ?></a>
+            </div>
+            <?php
+            } else {
+            ?>
             <div class="sign_container">
                 <a href="login.php"><button>Login</button></a>
                 <a href="signup.php"><button>signup</button></a>
             </div>
+            <?php
+            }
+            ?>
         </div>
         <div class="phone-menu" id="toggle"></div>
     </nav>
@@ -50,6 +68,7 @@
     -->
 
     <header id="Header" class="header-container">
+
         <div class="header-content">
             <h1>The Best Law Expert In the Area</h1>
 
@@ -75,87 +94,30 @@
         </h1>
 
         <div class="expertise-container">
-            <!--? first expertise -->
-            <div class="expertise-box">
-                <div class="expertise-image">
-                    <img src="./images/maintt.jpg" alt="" />
-                    <div class="expertise-sign">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                </div>
-                <div class="expertise-infos">
-                    <h1>BANKING AND FINANCE</h1>
-                    <p>
-                        Override the digital divide with additional clickthroughs from DevOps along the information
-                        highway will close.
-                    </p>
-                </div>
-            </div>
-            <!--? second expertise -->
-            <div class="expertise-box">
-                <div class="expertise-image">
-                    <img src="./images/maintt.jpg" alt="" />
-                    <div class="expertise-sign">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                </div>
-                <div class="expertise-infos">
-                    <h1>BANKING AND FINANCE</h1>
-                    <p>
-                        Override the digital divide with additional clickthroughs from DevOps along the information
-                        highway will close.
-                    </p>
-                </div>
-            </div>
-            <!--? third expertise -->
+            <?php
 
+            $sql = "select * from expertise";
+            $res = $conn->query($sql);
+            while ($row = $res->fetch_assoc()) {
+            ?>
             <div class="expertise-box">
                 <div class="expertise-image">
-                    <img src="./images/maintt.jpg" alt="" />
+                    <img src=<?php echo $row["photo"]; ?> alt="" />
                     <div class="expertise-sign">
                         <i class="fa-solid fa-building-columns"></i>
                     </div>
                 </div>
                 <div class="expertise-infos">
-                    <h1>BANKING AND FINANCE</h1>
+                    <h1><?php echo $row["nomE"]; ?></h1>
                     <p>
-                        Override the digital divide with additional clickthroughs from DevOps along the information
-                        highway will close.
+                        <?php echo $row["description"]; ?>
                     </p>
                 </div>
             </div>
-            <!--? fourth expertise -->
-            <div class="expertise-box">
-                <div class="expertise-image">
-                    <img src="./images/maintt.jpg" alt="" />
-                    <div class="expertise-sign">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                </div>
-                <div class="expertise-infos">
-                    <h1>BANKING AND FINANCE</h1>
-                    <p>
-                        Override the digital divide with additional clickthroughs from DevOps along the information
-                        highway will close.
-                    </p>
-                </div>
-            </div>
-            <!--? fifth expertise -->
-            <div class="expertise-box">
-                <div class="expertise-image">
-                    <img src="./images/maintt.jpg" alt="" />
-                    <div class="expertise-sign">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                </div>
-                <div class="expertise-infos">
-                    <h1>BANKING AND FINANCE</h1>
-                    <p>
-                        Override the digital divide with additional clickthroughs from DevOps along the information
-                        highway will close.
-                    </p>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
+
         </div>
     </div>
 
@@ -254,144 +216,38 @@
             </h1>
             <div class="members">
                 <!--? first member -->
+                <?php
+                $sqlAvocat = "select * from avocat";
+                $resA = $conn->query($sqlAvocat);
+                while ($row = $resA->fetch_assoc()) {
+                ?>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img width="200px" src=<?php echo $row["photo"]; ?> alt="" />
+                        <div class="member-sign">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="member-infos">
+                        <h1><?php echo $row["prenomA"] . " " . $row["nomA"]; ?></h1>
+                        <p><?php echo $row["specialite"]; ?></p>
+                        <div class="socials">
+                            <a href=<?php echo $row["linkedin"]; ?>>
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href=>
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href=<?php echo "mailto:" . $row["mail"]; ?>>
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
 
-                <div class="member-card">
-                    <div class="member-image">
-                        <img width="200px" src="./images/member.jpg" alt="" />
-                        <div class="member-sign">
-                            <i class="fa-solid fa-money-bill-wave"></i>
-                        </div>
-                    </div>
-                    <div class="member-infos">
-                        <h1>JOHN LEGEND</h1>
-                        <p>Commercial Law</p>
-                        <div class="socials">
-                            <a href="#">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                            <a href="mailto:someone@example.com">
-                                <i class="fa-solid fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!--? second member -->
-                <div class="member-card">
-                    <div class="member-image">
-                        <img width="200px" src="./images/member.jpg" alt="" />
-                        <div class="member-sign">
-                            <i class="fa-solid fa-money-bill-wave"></i>
-                        </div>
-                    </div>
-                    <div class="member-infos">
-                        <h1>JOHN LEGEND</h1>
-                        <p>Commercial Law</p>
-                        <div class="socials">
-                            <a href="#">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                            <a href="mailto:someone@example.com">
-                                <i class="fa-solid fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!--? third member -->
-                <div class="member-card">
-                    <div class="member-image">
-                        <img width="200px" src="./images/member.jpg" alt="" />
-                        <div class="member-sign">
-                            <i class="fa-solid fa-money-bill-wave"></i>
-                        </div>
-                    </div>
-                    <div class="member-infos">
-                        <h1>JOHN LEGEND</h1>
-                        <p>Commercial Law</p>
-                        <div class="socials">
-                            <a href="#">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                            <a href="mailto:someone@example.com">
-                                <i class="fa-solid fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!--? fourth member -->
-                <div class="member-card">
-                    <div class="member-image">
-                        <img width="200px" src="./images/member.jpg" alt="" />
-                        <div class="member-sign">
-                            <i class="fa-solid fa-money-bill-wave"></i>
-                        </div>
-                    </div>
-                    <div class="member-infos">
-                        <h1>JOHN LEGEND</h1>
-                        <p>Commercial Law</p>
-                        <div class="socials">
-                            <a href="#">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                            <a href="mailto:someone@example.com">
-                                <i class="fa-solid fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!--? fifth member -->
-                <div class="member-card">
-                    <div class="member-image">
-                        <img width="200px" src="./images/member.jpg" alt="" />
-                        <div class="member-sign">
-                            <i class="fa-solid fa-money-bill-wave"></i>
-                        </div>
-                    </div>
-                    <div class="member-infos">
-                        <h1>JOHN LEGEND</h1>
-                        <p>Commercial Law</p>
-                        <div class="socials">
-                            <a href="#">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-twitter"></i>
-                            </a>
-                            <a href="mailto:someone@example.com">
-                                <i class="fa-solid fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -407,9 +263,66 @@
             Contact Us
             <i class="fa-solid fa-location-dot"></i>
         </h1>
-        <div class="contact__containe">
-            <div class="left__contact-section"></div>
-            <div class="right-section"></div>
+        <div class="contact__container">
+            <div class="contact_container-form">
+                <i class="fa-solid fa-file-pen"></i>
+                <h1 class="form-title">Submit your form for more details</h1>
+                <form action="">
+                    <div class="form-grp">
+
+                        <input type="text" name="" id="" placeholder="Full Name*" />
+                        <input type="email" name="" id="" placeholder="Email*" />
+                    </div>
+                    <input type="text" name="" id="" placeholder="Telephone*" />
+                    <Select>
+                        <option value="">---</option>
+                        <option value="">Option1</option>
+                        <option value="">Option2</option>
+                        <option value="">Option3</option>
+                    </Select>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Details*"></textarea>
+                    <button>Submit</button>
+                </form>
+            </div>
+            <div class="contact_container-infos">
+                <h1>Contact Information</h1>
+                <p>We are here for you <br />
+                    24h a day, 7 days a week</p>
+                <div class="infos">
+                    <div class="infos-left">
+                        <div class="phone">
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="phone-info">
+                                <h3>PHONE:</h3>
+                                <p>1 800 643 43006</p>
+                            </div>
+                        </div>
+                        <div class="address">
+                            <i class="fa-solid fa-house"></i>
+                            <div class="adr-info">
+                                <h3>ADDRESS:</h3>
+                                <p>49 Russell, London</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infos-right">
+                        <div class="email">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="email-info">
+                                <h3>EMAIL:</h3>
+                                <p>info@goldenblatt.co.uk</p>
+                            </div>
+                        </div>
+                        <div class="hours">
+                            <i class="fa-solid fa-clock"></i>
+                            <div class="hours-info">
+                                <h3>HOURS:</h3>
+                                <p>Mon-Sun: 8am – 8pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!--
