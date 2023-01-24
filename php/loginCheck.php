@@ -10,8 +10,13 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $_SESSION['nom'] = $row['nomP'];
     $_SESSION['prenom'] = $row['prenomP'];
+    $_SESSION['adresse'] = $row['adresse'];
     $_SESSION['cni'] = $row['CNI'];
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['passwordClient'] = $row['password'];
+    $_SESSION['tel'] = $row['tel'];
     $_SESSION['isLogged'] = true;
+    $_SESSION['photoClient'] = $row['photo'];
     header("location:../index.php");
 }
 $conn->close();

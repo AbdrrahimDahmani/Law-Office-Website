@@ -14,7 +14,8 @@ include('./connection/connexion.php');
     <link rel="stylesheet" href="./css/all.min.css" />
     <link rel="stylesheet" href="./css/fontawesome.min.css" />
     <script defer src="./js/homeScript.js"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
 </head>
 
 <body>
@@ -28,7 +29,7 @@ include('./connection/connexion.php');
             <i class="fa-solid fa-gavel"></i>
         </a>
         <div id="sidebar" class="navbar">
-            <ul>
+            <ul class="list1">
                 <li>
                     <a href="#Header">Home</a>
                 </li>
@@ -42,10 +43,34 @@ include('./connection/connexion.php');
             <?php
             if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
             ?>
-            <div class="profile">
-                <img src="./images/profile.avif" alt="profile pic">
-                <a href="profile.php"><?php echo $_SESSION['nom']; ?></a>
-            </div>
+            <ul class="profile">
+                <li><img src=<?php echo $_SESSION['photoClient']; ?> alt="profile pic"></li>
+                <li class="profileName"><a href=""><?php echo $_SESSION['nom']; ?> </a>
+                    <ul>
+                        <li class="sub-item">
+                            <span class="material-icons-outlined">
+                                format_list_bulleted
+                            </span>
+                            <p><a href="">History</a></p>
+                        </li>
+                        <li class="sub-item">
+                            <span class="material-icons-outlined"> manage_accounts </span>
+                            <p><a href="profile.php">Update Profile</a></p>
+                        </li>
+                        <li class="sub-item">
+                            <span class="material-icons-outlined"> logout </span>
+                            <p><a href="?logout">Logout</a></p>
+                            <?php
+                                if (isset($_GET['logout'])) {
+                                    session_unset();
+                                    header("location:index.php");
+                                }
+                                ?>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
             <?php
             } else {
             ?>
