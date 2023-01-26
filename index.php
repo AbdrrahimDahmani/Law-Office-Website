@@ -14,8 +14,7 @@ include('./connection/connexion.php');
     <link rel="stylesheet" href="./css/all.min.css" />
     <link rel="stylesheet" href="./css/fontawesome.min.css" />
     <script defer src="./js/homeScript.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -23,7 +22,7 @@ include('./connection/connexion.php');
         ? navBar Start
     -->
 
-    <nav class="navbar_container">
+    <!-- <nav class="navbar_container">
         <a href="#" class="navbar_logo">
             <span>LOGO</span>
             <i class="fa-solid fa-gavel"></i>
@@ -61,11 +60,11 @@ include('./connection/connexion.php');
                             <span class="material-icons-outlined"> logout </span>
                             <p><a href="?logout">Logout</a></p>
                             <?php
-                                if (isset($_GET['logout'])) {
-                                    session_unset();
-                                    header("location:index.php");
-                                }
-                                ?>
+                            if (isset($_GET['logout'])) {
+                                session_unset();
+                                header("location:index.php");
+                            }
+                            ?>
                         </li>
                     </ul>
                 </li>
@@ -83,7 +82,10 @@ include('./connection/connexion.php');
             ?>
         </div>
         <div class="phone-menu" id="toggle"></div>
-    </nav>
+    </nav> -->
+    <?php
+    include('./assets/header.php');
+    ?>
     <!--
         ? navBar End
     -->
@@ -100,7 +102,7 @@ include('./connection/connexion.php');
             <p>
                 We specialise in corporate law, litigation, commercial and residential property.
             </p>
-            <button>Consult Now!</button>
+            <button onclick="window.location.href = 'consultation.php'">Consult Now!</button>
         </div>
     </header>
 
@@ -358,40 +360,9 @@ include('./connection/connexion.php');
       ? Footer section start
     -->
 
-    <footer class="footer-section">
-        <div class="footer-content">
-            <div class="web-infos">
-                <a href="#" class="navbar_logo">
-                    <span>LOGO</span>
-                    <i class="fa-solid fa-gavel"></i>
-                </a>
-                <div class="follow">
-                    <h3>Follow Us:</h3>
-                    <div class="footer-socials">
-                        <a href=""><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <p class="copy-right">Copyright © <span>WEBSITENAME</span> 2022</p>
-            </div>
-            <div class="services">
-                <h2>Services</h2>
-                <a href="#">service1</a>
-                <a href="#">service2</a>
-                <a href="#">service3</a>
-                <a href="#">service4</a>
-            </div>
-            <div class="links">
-                <h2>Useful Links</h2>
-                <a href="#">Link1</a>
-                <a href="#">Link2</a>
-                <a href="#">Link3</a>
-                <a href="#">Link4</a>
-            </div>
-        </div>
-    </footer>
+    <?php
+    include('./assets/footer.php');
+    ?>
 
     <!--
       ? Footer section end

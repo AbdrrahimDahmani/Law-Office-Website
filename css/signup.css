@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import "./global.css";
 * {
     font-family: "Poppins", sans-serif;
@@ -15,6 +15,14 @@ body {
     height: 100vh;
     padding: 10px;
     background: linear-gradient(to right, var(--black-color), var(--main-color));
+}
+
+.navbar ul {
+    display: none !important;
+}
+
+.sign_container .signup {
+    display: none;
 }
 
 

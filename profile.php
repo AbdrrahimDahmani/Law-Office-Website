@@ -9,12 +9,17 @@ include('./connection/connexion.php');
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/homeStyle.css" />
     <link rel="stylesheet" href="./css/profileStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <title>Profile</title>
 </head>
 
 <body>
+    <?php
+    include('./connection/connexion.php');
+    include('./assets/header.php');
+    ?>
     <div class="profile-container">
         <div class="profile-container_left">
             <div class="profile-image">
@@ -37,7 +42,27 @@ include('./connection/connexion.php');
         </div>
         <div class="profile-container_right">
             <h1>Account Settings</h1>
-            <form action="" class="account-form">
+
+            <?php
+            if (isset($_POST['submit'])) {
+                $stmt = $conn->prepare("UPDATE `client` SET `nomP` = ?, `prenomP` = ?, `adresse` = ?, `CNI` = ?, `email` = ?, `tel` = ? WHERE `idP` = ?");
+                $stmt->bind_param("ssssssi", $_POST['lastName'], $_POST['firstName'], $_POST['adresse'], $_POST['cni'], $_POST['email'], $_POST['tel'], $_SESSION['idC']);
+                if ($stmt->execute()) {
+
+                    $_SESSION['nom'] =  $_POST['lastName'];
+                    $_SESSION['prenom'] = $_POST['firstName'];
+                    $_SESSION['adresse'] = $_POST['adresse'];
+                    $_SESSION['cni'] = $_POST['cni'];
+                    $_SESSION['email'] = $_POST['email'];
+                    $_SESSION['tel'] = $_POST['tel'];
+                    echo '<div style="color:green; text-align:center; margin-top:30px;">Your informations has been updated.</div>';
+                } else {
+                    echo "Error executing query: " . $stmt->error;
+                }
+            }
+
+            ?>
+            <form action="profile.php" method="post" class="account-form">
                 <label for="cni">CNI</label>
                 <input type="text" name="cni" id="fullname" value=<?php echo $_SESSION['cni']; ?> />
                 <label for="fullname">First Name</label>
@@ -47,7 +72,7 @@ include('./connection/connexion.php');
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value=<?php echo $_SESSION['email']; ?> />
                 <label for="address">Address</label>
-                <input type="text" name="address" id="address" value=<?php echo $_SESSION['adresse']; ?> />
+                <input type="text" name="addresse" id="address" value=<?php echo $_SESSION['adresse']; ?> />
                 <label for="tel">Phone Number</label>
                 <input type="tel" name="tel" id="tel" value=<?php echo $_SESSION['tel']; ?> />
                 <div class="radio-grp">
@@ -56,21 +81,37 @@ include('./connection/connexion.php');
                     <input type="radio" id="female" name="gender" value="female" />
                     <label for="female">Female</label><br />
                 </div>
-                <button>Save Changes</button>
+                <input type="submit" name="submit" value="Save Changes">
             </form>
-
             <!--
             ? password Form
         -->
-            <form action="" class="password-form toggle">
+            <?php
+            if (isset($_POST['submitPsw'])) {
+                if (isset($_POST['psw']) && isset($_POST['cpsw']) && $_POST['psw'] == $_POST['cpsw']) {
+                    $stmt = $conn->prepare("UPDATE `client` SET `password` = ? WHERE `idP` = ?");
+                    $stmt->bind_param("si", $_POST['psw'], $_SESSION['idC']);
+                    if ($stmt->execute()) {
+                        $_SESSION['passwordClient'] = $_POST['psw'];
+                    } else {
+                        echo  $stmt->error;
+                    }
+                } else {
+                    echo '<div style="color:red; text-align:center;">Error: Passwords do not match.</div>';
+                }
+            }
+
+            ?>
+            <form action="profile.php" method="post" class="password-form toggle">
                 <label for="user">Current Password</label>
                 <input type="password" name="user" id="user" value=<?php echo $_SESSION['passwordClient']; ?> />
                 <label for="psw">New Password</label>
                 <input type="password" name="psw" id="psw" />
                 <label for="cpsw">Confirm Password</label>
                 <input type="password" name="cpsw" id="cpsw" />
-                <button>Save Changes</button>
+                <input type="submit" name="submitPsw" value="Save Changes">
             </form>
+
         </div>
     </div>
     <script src="./js/profileScript.js"></script>

@@ -19,6 +19,7 @@ body {
     width: 100%;
     font-family: var(--secondary-font);
     z-index: 9000;
+    top: 0;
 }
 
 ul li {
@@ -116,10 +117,14 @@ a {
     gap: 0.65rem;
 }
 
+.buttons_container {
+    display: none;
+}
+
 .sign_container button {
     padding: 0.45rem 1.5rem;
     cursor: pointer;
-    background-color: var(--main-color);
+    background-color: transparent;
     color: var(--white-color);
     border: none;
     text-transform: uppercase;
@@ -786,6 +791,46 @@ form .form-grp input {
     /*
   ? navbar mobile style
   */
+    li ul {
+        visibility: hidden;
+    }
+    .buttons_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.65rem;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    .buttons_container button {
+        padding: 0.45rem 1.5rem;
+        cursor: pointer;
+        background-color: transparent;
+        color: var(--white-color);
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.75rem;
+        position: relative;
+        z-index: 1;
+        border-radius: 8px;
+        border: 2px solid var(--white-color);
+    }
+    .buttons_container button::before {
+        content: "";
+        width: 100%;
+        height: 0;
+        background-color: rgba(0, 0, 0, 0.329);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: 0.3s ease-in-out;
+        z-index: -1;
+        border-radius: 10px;
+    }
+    .buttons_container button:hover:before {
+        height: 100%;
+    }
     .navbar_container {
         align-items: center;
     }
@@ -804,7 +849,8 @@ form .form-grp input {
         transition: 0.4s ease-in-out;
         letter-spacing: 2px;
         grid-template-areas: "profile" "navText";
-        grid-auto-rows: max-content;
+        grid-auto-rows: inherit;
+        grid-template-rows: min-content;
     }
     .navbar.active {
         left: 0;
@@ -837,9 +883,12 @@ form .form-grp input {
     .profile a {
         padding-left: 0px;
     }
+    .profileName #name {
+        text-align: center;
+    }
     .sign_container button {
         width: 8rem;
-        margin-right: 1.5rem;
+        margin-right: 0rem;
     }
     .phone-menu {
         display: flex;
@@ -981,7 +1030,6 @@ li ul {
 
 ul li:hover>ul,
 ul li ul:hover {
-    visibility: visible;
     opacity: 1;
     display: flex;
 }

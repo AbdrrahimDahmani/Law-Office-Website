@@ -8,6 +8,7 @@ $result = $conn->query($query);
 $_SESSION['isLogged'] = false;
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
+    $_SESSION['idC'] = $row['idP'];
     $_SESSION['nom'] = $row['nomP'];
     $_SESSION['prenom'] = $row['prenomP'];
     $_SESSION['adresse'] = $row['adresse'];

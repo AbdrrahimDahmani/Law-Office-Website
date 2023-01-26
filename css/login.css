@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import "./global.css";
 * {
     font-family: "Poppins", sans-serif;
@@ -16,6 +16,14 @@ body {
 a {
     text-decoration: none;
     color: var(--black-color);
+}
+
+.navbar ul {
+    display: none !important;
+}
+
+.sign_container .login {
+    display: none;
 }
 
 .container {
@@ -78,7 +86,7 @@ a {
 }
 
 .forms .form-content .title:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -171,7 +179,7 @@ a {
 @keyframes buttonHovered {
     0% {
         transform: scale(1);
-        background: linear-gradient(to right, var(--black-color), var(--main-color));
+        background: linear-gradient( to right, var(--black-color), var(--main-color));
     }
     50% {
         transform: scale(1.01);

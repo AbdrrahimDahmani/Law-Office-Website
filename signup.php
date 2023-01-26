@@ -3,12 +3,17 @@
 
 <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/homeStyle.css" />
     <link rel="stylesheet" href="./css/signup.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script difer src="./js/signup.js"></script>
 </head>
 
 <body>
+    <?php
+    include('./connection/connexion.php');
+    include('./assets/header.php');
+    ?>
     <div class="container">
         <div class="title">Inscription</div>
         <div class="content">
@@ -20,7 +25,8 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Last Name</span>
-                        <input type="text" id="nomUtilisateur" name="prenom" placeholder="Entrer votre nom d'utilisateur" required />
+                        <input type="text" id="nomUtilisateur" name="prenom"
+                            placeholder="Entrer votre nom d'utilisateur" required />
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
@@ -28,7 +34,8 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Phone</span>
-                        <input type="text" id="numero" name="phone" placeholder="Entrer votre N° de téléphone" required />
+                        <input type="text" id="numero" name="phone" placeholder="Entrer votre N° de téléphone"
+                            required />
                     </div>
                     <div class="input-box">
                         <span class="details">Password</span>
@@ -46,17 +53,17 @@
                     <span class="gender-title">Sexe</span>
                     <div class="category">
                         <label for="dot-1">
-                <span class="dot one"></span>
-                <span class="gender">Men</span>
-              </label>
+                            <span class="dot one"></span>
+                            <span class="gender">Men</span>
+                        </label>
                         <label for="dot-2">
-                <span class="dot two"></span>
-                <span class="gender">Women</span>
-              </label>
+                            <span class="dot two"></span>
+                            <span class="gender">Women</span>
+                        </label>
                         <label for="dot-3">
-                <span class="dot three"></span>
-                <span class="gender">I Prefer Not To Say</span>
-              </label>
+                            <span class="dot three"></span>
+                            <span class="gender">I Prefer Not To Say</span>
+                        </label>
                     </div>
                 </div>
                 <div class="button">
