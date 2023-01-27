@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="./css/homeStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <script defer src="./js/consultation.js"></script>
+    <script defer src="./js/fetchPrice.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="./js/fetchTime.js"></script>
     <title>Consultation</title>
 </head>
 
@@ -21,12 +25,24 @@
         <h1>Consultation <i class="fa-solid fa-handshake"></i></h1>
         <div class="consultation-sections">
             <div class="left-section">
-                <form action="" class="form">
+                <?php
+                if (isset($_POST['submit']) && isset($_POST['type']) && isset($_POST['detail']) && isset($_POST['date']) && isset($_POST['time'])) {
+                    $idCon = $_POST['type'];
+                    $detail = $_POST['detail'];
+
+                    $query = "INSERT INTO `consultationclient`(`idCon`, `idCli`, `isDone`, `detail`, `time`, `consultationDate`) VALUES (" . $idCon . "," . $_SESSION['idC'] . ",0,'" . $detail . "','" . $_POST['time'] . "','" . $_POST['date'] . "')";
+                    if (!$conn->query($query)) {
+                        echo '<div style="color:red; text-align:center;">Error: Data cant be inserted.</div>';
+                    } else {
+                        header('location:consultationHistory.php');
+                    }
+                }
+                ?>
+                <form action="consultation.php" method="post" class="form">
                     <h1 class="text-center">Form <i class="fa-solid fa-pen"></i></h1>
                     <!-- Progress bar -->
                     <div class="progressbar">
                         <div class="progress" id="progress"></div>
-
                         <div class="progress-step progress-step-active" data-title="Case"></div>
                         <div class="progress-step" data-title="Details"></div>
                         <div class="progress-step" data-title="Appointment"></div>
@@ -37,7 +53,7 @@
 
                         <div class="input-group">
                             <label for="phone">Case Type:</label>
-                            <select name="" id="">
+                            <select name="type" id="type">
                                 <option value="">---</option>
                                 <?php
                                 $sql = 'SELECT * FROM `consultation`';
@@ -46,25 +62,13 @@
                                 ?>
                                 <option value=<?php echo $row['idC']; ?>><?php echo $row['type']; ?></option>
                                 <?php
-                                    $_SESSION['idConsultation'] = $row['idC'];
                                 }
                                 ?>
                             </select>
                         </div>
                         <div class="input-group">
-                            <label for="court">Price</label>
-                            <select name="" id="">
-                                <?php
-                                $sql = 'SELECT * FROM `consultation` where idC=' . $_SESSION['idConsultation'];
-                                $result = $conn->query($sql);
-                                $res = $result->fetch_assoc();
-                                if ($result->num_rows > 0) {
-                                ?>
-                                <option value=<?php echo $res['idC']; ?>><?php echo $res['prix']; ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
+                            <label for="price">Price:</label>
+                            <input type="text" name="price" id="price" readonly value="">
                         </div>
 
                         <div class="btns-group">
@@ -88,16 +92,31 @@
                     <div class="form-step">
                         <div class="input-group">
                             <label for="date">Date of Appointment:</label>
-                            <input type="date" name="date" id="date" />
+                            <input type="date" name="date" id="date" min=<?php echo date("Y-m-d"); ?> />
+                            <script>
+                            $(document).ready(function() {
+                                var today = new Date();
+                                var dd = String(today.getDate()).padStart(2, '0');
+                                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                var yyyy = today.getFullYear();
+                                today = yyyy + '-' + mm + '-' + dd;
+                                document.getElementById("date").value = today;
+                            });
+                            </script>
                         </div>
                         <div class="input-group">
-                            <label for="time">Time of Appointment:</label>
-                            <input type="time" id="time" name="time" min="09:00" max="18:00" required />
+                            <label for="time">Appointment Time:</label>
+                            <select name="time" id="time">
+                                <option value="08:00 AM - 10:00 AM">08:00 AM - 10:00 AM</option>
+                                <option value="10:00 AM - 12:00 AM">10:00 AM - 12:00 AM</option>
+                                <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
+                                <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM</option>
+                            </select>
                         </div>
                         <div class="price-duration">
                             <div class="price">
                                 <i class="fa-solid fa-sack-dollar"></i>
-                                <span>250</span>
+                                <span id="totalPrice">--</span>
                                 <span>DH</span>
                             </div>
                             <div class="duration">
@@ -107,10 +126,11 @@
                         </div>
                         <div class="btns-group">
                             <a href="#" class="btn btn-prev">Previous</a>
-                            <input type="submit" value="Submit" class="btn" />
+                            <input type="submit" name="submit" value="Submit" class="btn" />
                         </div>
                     </div>
                 </form>
+
             </div>
             <!-- 
             ?right

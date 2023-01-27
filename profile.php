@@ -12,6 +12,7 @@ include('./connection/connexion.php');
     <link rel="stylesheet" href="./css/homeStyle.css" />
     <link rel="stylesheet" href="./css/profileStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Profile</title>
 </head>
 
@@ -29,7 +30,7 @@ include('./connection/connexion.php');
                 <h2>welcome <?php echo $_SESSION['nom'] . " " . $_SESSION['prenom']; ?></h2>
             </div>
 
-            <ul class="profile-buttons">
+            <ul class="profile-buttons" id="profileButtons">
                 <li id="Account" class="active">
                     <i class="fa-solid fa-address-card"></i>
                     Account
@@ -97,7 +98,17 @@ include('./connection/connexion.php');
                         echo  $stmt->error;
                     }
                 } else {
-                    echo '<div style="color:red; text-align:center;">Error: Passwords do not match.</div>';
+                    echo '<div style="color:red; text-align:center;" id="pswError">Error: Passwords do not match.</div>';
+            ?>
+            <script>
+            // document.querySelector('#profileButtons li.active').classList.remove('active');
+            // var password = document.getElementById('Password');
+            // password.className = 'active';
+            setTimeout(function() {
+                $('#pswError').fadeOut('slow');
+            }, 4000);
+            </script>
+            <?php
                 }
             }
 

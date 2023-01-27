@@ -21,75 +21,13 @@ include('./connection/connexion.php');
     <!--
         ? navBar Start
     -->
-
-    <!-- <nav class="navbar_container">
-        <a href="#" class="navbar_logo">
-            <span>LOGO</span>
-            <i class="fa-solid fa-gavel"></i>
-        </a>
-        <div id="sidebar" class="navbar">
-            <ul class="list1">
-                <li>
-                    <a href="#Header">Home</a>
-                </li>
-                <li>
-                    <a href="#About">About</a>
-                </li>
-                <li>
-                    <a href="#Services">Services</a>
-                </li>
-            </ul>
-            <?php
-            if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
-            ?>
-            <ul class="profile">
-                <li><img src=<?php echo $_SESSION['photoClient']; ?> alt="profile pic"></li>
-                <li class="profileName"><a href=""><?php echo $_SESSION['nom']; ?> </a>
-                    <ul>
-                        <li class="sub-item">
-                            <span class="material-icons-outlined">
-                                format_list_bulleted
-                            </span>
-                            <p><a href="">History</a></p>
-                        </li>
-                        <li class="sub-item">
-                            <span class="material-icons-outlined"> manage_accounts </span>
-                            <p><a href="profile.php">Update Profile</a></p>
-                        </li>
-                        <li class="sub-item">
-                            <span class="material-icons-outlined"> logout </span>
-                            <p><a href="?logout">Logout</a></p>
-                            <?php
-                            if (isset($_GET['logout'])) {
-                                session_unset();
-                                header("location:index.php");
-                            }
-                            ?>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-            <?php
-            } else {
-            ?>
-            <div class="sign_container">
-                <a href="login.php"><button>Login</button></a>
-                <a href="signup.php"><button>signup</button></a>
-            </div>
-            <?php
-            }
-            ?>
-        </div>
-        <div class="phone-menu" id="toggle"></div>
-    </nav> -->
     <?php
     include('./assets/header.php');
     ?>
     <!--
         ? navBar End
     -->
-    <!--*************************************** -->
+
     <!--
         ? Header Start
     -->
@@ -102,7 +40,17 @@ include('./connection/connexion.php');
             <p>
                 We specialise in corporate law, litigation, commercial and residential property.
             </p>
+            <?php
+            if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
+            ?>
             <button onclick="window.location.href = 'consultation.php'">Consult Now!</button>
+            <?php
+            } else {
+            ?>
+            <button onclick="window.location.href = 'login.php'">Consult Now!</button>
+            <?php
+            }
+            ?>
         </div>
     </header>
 

@@ -27,7 +27,15 @@
             ? first consultation
         -->
             <?php
-            $query = "SELECT consultation.*, avocat.*, consultationclient.* FROM `client`,`consultation`, `avocat`, `consultationclient` WHERE client.idP='" . $_SESSION['idC'] . "' AND idC = idCon AND avocat.idA=consultationclient.idAv AND client.idP=consultationclient.idCli";
+            $query = "SELECT consultation.*, avocat.*, consultationclient.* 
+            FROM consultation
+            JOIN consultationclient ON consultation.idC = consultationclient.idCon 
+            JOIN consultationavocat ON consultation.idC = consultationavocat.idConA 
+            JOIN avocat ON avocat.idA = consultationavocat.idAv 
+            JOIN client ON client.idP = consultationclient.idCli 
+            WHERE client.idP = " . $_SESSION['idC'] . " 
+            ORDER BY consultationDate desc
+            ";
             $res = $conn->query($query);
             while ($row = $res->fetch_assoc()) {
             ?>
@@ -79,7 +87,7 @@
                                 </div>
                                 <div class="duration">
                                     <span>Duration:</span>
-                                    <p><?php echo $row['duration']; ?> hours</p>
+                                    <p><?php echo $row['time']; ?></p>
                                 </div>
                                 <div class="status">
                                     <span>Status:</span>
