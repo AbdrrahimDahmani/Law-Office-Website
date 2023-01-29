@@ -167,3 +167,9 @@ input[type="radio"] {
 .button input:hover {
     background: linear-gradient(to left, var(--black-color), var(--main-color));
 }
+
+@media screen and (max-width: 900px) {
+    .list1 li {
+        display: none;
+    }
+}

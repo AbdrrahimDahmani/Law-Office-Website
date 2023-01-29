@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-include('./connection/connexion.php');
-
-?>
 
 <head>
     <meta charset="UTF-8" />
@@ -21,6 +17,7 @@ include('./connection/connexion.php');
     include('./connection/connexion.php');
     include('./assets/header.php');
     ?>
+
     <div class="profile-container">
         <div class="profile-container_left">
             <div class="profile-image">

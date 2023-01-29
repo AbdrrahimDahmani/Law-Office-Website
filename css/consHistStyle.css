@@ -119,3 +119,7 @@
     gap: 5px;
     align-items: center;
 }
+
+.navbar .itemsList ul li {
+    display: none !important;
+}

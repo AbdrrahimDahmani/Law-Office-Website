@@ -16,7 +16,7 @@ date.addEventListener("change", function() {
             var result = JSON.parse(xhrT.responseText);
 
             for (let i = 0; i < result.length; i++) {
-                $("#time option[value='" + result[i] + "']").remove();
+                // $("#time option[value='" + result[i] + "']").remove();
             }
         }
     };

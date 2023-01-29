@@ -13,7 +13,7 @@ include('./connection/connexion.php');
     <link rel="stylesheet" href="./css/homeStyle.css" />
     <link rel="stylesheet" href="./css/all.min.css" />
     <link rel="stylesheet" href="./css/fontawesome.min.css" />
-    <script defer src="./js/homeScript.js"></script>
+
 
 </head>
 

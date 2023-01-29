@@ -16,26 +16,29 @@
             <i class="fa-solid fa-gavel"></i>
         </a>
         <div id="sidebar" class="navbar">
-            <ul class="list1">
-                <li>
-                    <a href="#Header">Home</a>
-                </li>
-                <li>
-                    <a href="#About">About</a>
-                </li>
-                <li>
-                    <a href="#Services">Services</a>
-                </li>
-                <?php
-                if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
-                ?>
-                <div class="buttons_container">
-                    <a class="history" href="consultationHistory.php"><button>History</button></a>
-                    <a class="profileUpdate" href="profile.php"><button>Update Profile</button></a>
-                    <a class="logout" href="?logout"><button>Logout</button></a>
-                </div>
-                <?php } ?>
-            </ul>
+            <div class="itemsList">
+                <ul class="list1">
+                    <li>
+                        <a href="#Header">Home</a>
+                    </li>
+                    <li>
+                        <a href="#About">About</a>
+                    </li>
+                    <li>
+                        <a href="#Services">Services</a>
+                    </li>
+                    <?php
+                    if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
+                    ?>
+                    <div class="buttons_container">
+                        <a class="history" href="consultationHistory.php"><button>History</button></a>
+                        <a class="profileUpdate" href="profile.php"><button>Update Profile</button></a>
+                        <a class="logout" href="?logout"><button>Logout</button></a>
+                    </div>
+                    <?php } ?>
+                </ul>
+            </div>
+
 
             <?php
             if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
@@ -43,7 +46,7 @@
             <ul class="profile">
                 <li><img src=<?php echo $_SESSION['photoClient']; ?> alt="profile pic"></li>
                 <li class="profileName"><a id="name" href=""><?php echo $_SESSION['nom']; ?> </a>
-                    <ul>
+                    <ul id="itemsMenu">
                         <li class="sub-item">
                             <span class="material-icons-outlined">
                                 format_list_bulleted

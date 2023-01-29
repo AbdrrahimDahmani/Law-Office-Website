@@ -197,4 +197,11 @@ a {
     .form-content .login-form {
         width: 100%;
     }
+    .list1 li {
+        display: none;
+    }
+}
+
+.navbar .itemsList ul li {
+    display: none !important;
 }
