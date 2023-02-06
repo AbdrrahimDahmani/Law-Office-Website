@@ -43,23 +43,24 @@
                     $_SESSION['passwordClient'] = $row['password'];
                     $_SESSION['tel'] = $row['tel'];
                     $_SESSION['isLogged'] = true;
+                    $_SESSION['genderClient'] = $row['gender'];
                     $_SESSION['photoClient'] = $row['photo'];
                     header("location:index.php");
                 } else {
 
             ?>
-            <script>
-            let form = document.getElementById('form1');
-            let span = document.createElement('span');
-            span.innerText = "Email or password does not match our data";
-            span.style.color = "red";
-            span.style.marginLeft = "1rem"
-            span.id = "handleError"
-            form.appendChild(span);
-            setTimeout(function() {
-                $('#handleError').fadeOut('slow');
-            }, 2000);
-            </script>
+                    <script>
+                        let form = document.getElementById('form1');
+                        let span = document.createElement('span');
+                        span.innerText = "Email or password does not match our data";
+                        span.style.color = "red";
+                        span.style.marginLeft = "1rem"
+                        span.id = "handleError"
+                        form.appendChild(span);
+                        setTimeout(function() {
+                            $('#handleError').fadeOut('slow');
+                        }, 2000);
+                    </script>
             <?php
                 }
             }

@@ -13,7 +13,7 @@
         <div class="footer-content">
             <div class="web-infos">
                 <a href="#" class="navbar_logo">
-                    <span>LOGO</span>
+                    <span>LAWYERUP</span>
                     <i class="fa-solid fa-gavel"></i>
                 </a>
                 <div class="follow">

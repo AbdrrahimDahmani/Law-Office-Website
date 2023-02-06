@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar_container">
         <a href="index.php" class="navbar_logo">
-            <span>LOGO</span>
+            <span>LAWYERUP</span>
             <i class="fa-solid fa-gavel"></i>
         </a>
         <div id="sidebar" class="navbar">

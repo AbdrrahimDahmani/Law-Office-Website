@@ -23,7 +23,7 @@ if (isset($_POST['submit']) && isset($_POST['mail']) && isset($_POST['psw'])) {
         $conn->close();
         header("location:../index.php");
     } else {
-        echo "error";
+
 ?>
 <script>
 let form = document.getElementById('form1');
