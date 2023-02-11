@@ -3,12 +3,12 @@ var time = document.getElementById("time");
 date.addEventListener("change", function() {
     var dateSelected = date.value;
     console.log(
-        "http://localhost/lawyerProject/php/getTime.php?date=" + dateSelected
+        "https://localhost/lawyerProject/php/getTime.php?date=" + dateSelected
     );
     var xhrT = new XMLHttpRequest();
     xhrT.open(
         "GET",
-        "http://localhost/lawyerProject/php/getTime.php?date=" + dateSelected
+        "https://localhost/lawyerProject/php/getTime.php?date=" + dateSelected
     );
     xhrT.onload = function() {
         if (xhrT.status === 200) {

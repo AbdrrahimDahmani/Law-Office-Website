@@ -43,7 +43,8 @@ include('./connection/connexion.php');
             <?php
             if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
             ?>
-            <button onclick="window.location.href = 'consultation.php'">Consult Now!</button>
+            <button onclick="window.location.href = 'https://localhost/lawyerProject/consultation.php'">Consult
+                Now!</button>
             <?php
             } else {
             ?>

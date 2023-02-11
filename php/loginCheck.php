@@ -7,7 +7,6 @@ if (isset($_POST['submit']) && isset($_POST['mail']) && isset($_POST['psw'])) {
     $password = $conn->real_escape_string($_POST['psw']);
     $query = "SELECT * FROM client WHERE email = '$mail' AND password = '$password'";
     $result = $conn->query($query);
-    $_SESSION['isLogged'] = false;
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $_SESSION['idC'] = $row['idP'];
@@ -25,13 +24,13 @@ if (isset($_POST['submit']) && isset($_POST['mail']) && isset($_POST['psw'])) {
     } else {
 
 ?>
-<script>
-let form = document.getElementById('form1');
-let span = document.createElement('span');
-span.innerText = "Email or password doesnt match our data";
-span.style = "color:red: text-align:center;";
-form.appendChild(span);
-</script>
+        <script>
+            let form = document.getElementById('form1');
+            let span = document.createElement('span');
+            span.innerText = "Email or password doesnt match our data";
+            span.style = "color:red: text-align:center;";
+            form.appendChild(span);
+        </script>
 <?php
     }
 }

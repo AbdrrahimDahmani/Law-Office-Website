@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 06 fév. 2023 à 16:57
+-- Généré le : sam. 11 fév. 2023 à 12:00
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -97,11 +97,11 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`idP`, `nomP`, `prenomP`, `gender`, `adresse`, `CNI`, `email`, `password`, `signupDate`, `tel`, `photo`) VALUES
-(1, 'Johnson', 'Michael', '', '1234 Main St, Anytown USA', '123456789', 'michael_johnson@email.com', 'password789', '2022-01-01', '555-555-1212', 'michael_johnson.jpg'),
-(2, 'Dahmani  ', 'Abderrahim ', 'male', '18 Rue 70', 'BA16772', 'ad@ad.ad', 'ad', '0000-00-00', '0630691655', './images/profile.avif'),
-(3, 'Williams', 'Emily', '', '5678 Main St, Anytown USA', '987654321', 'emily_williams@email.com', 'password246', '2022-02-01', '555-555-1213', 'emily_williams.jpg'),
-(4, 'Johnson', 'Ashley', '', '12 Main St, New York, NY 10001', '123456A', 'ashley@gmail.com', 'Ashley1234', '2020-05-01', '1234567890', 'ashley_johnson.jpg'),
-(5, 'Brown', 'David', '', '34 Park Ave, San Francisco, CA 94102', '234567B', 'david@gmail.com', 'David1234', '2020-07-01', '1234567890', 'david_brown.jpg');
+(1, 'Johnson', 'Michael', '', '1234 Main St, Anytown USA', '123456789', 'michael_johnson@email.com', 'password789', '2022-01-01', '555-555-1212', './images/1.jpg'),
+(2, 'Dahmani', 'Abderrahim ', 'male', '18 Rue 70', 'BA16772', 'ad@ad.ad', 'ad', '0000-00-00', '0630691655', './images/profile.avif'),
+(3, 'Williams', 'Emily', '', '5678 Main St, Anytown USA', '987654321', 'emily_williams@email.com', 'password246', '2022-02-01', '555-555-1213', './images/3.jpg'),
+(4, 'Johnson', 'Ashley', '', '12 Main St, New York, NY 10001', '123456A', 'ashley@gmail.com', 'Ashley1234', '2020-05-01', '1234567890', './images/2.jpg'),
+(5, 'Brown', 'David', '', '34 Park Ave, San Francisco, CA 94102', '234567B', 'david@gmail.com', 'David1234', '2020-07-01', '1234567890', './images/1.jpg');
 
 -- --------------------------------------------------------
 
@@ -124,7 +124,6 @@ INSERT INTO `consultation` (`idC`, `type`, `prix`) VALUES
 (2, 'Criminal issue', 180),
 (3, 'Criminal Defense', 200),
 (4, 'Family Law', 150),
-(5, 'Family Law', 200),
 (6, 'Criminal Law', 250);
 
 -- --------------------------------------------------------
@@ -137,19 +136,6 @@ CREATE TABLE `consultationavocat` (
   `idConA` int(11) NOT NULL,
   `idAv` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `consultationavocat`
---
-
-INSERT INTO `consultationavocat` (`idConA`, `idAv`) VALUES
-(1, 3),
-(1, 2),
-(2, 3),
-(3, 1),
-(4, 4),
-(2, 2),
-(4, 4);
 
 -- --------------------------------------------------------
 
@@ -173,8 +159,10 @@ CREATE TABLE `consultationclient` (
 INSERT INTO `consultationclient` (`idCon`, `idCli`, `isDone`, `detail`, `time`, `consultationDate`) VALUES
 (2, 1, 0, 'Case for Criminal Defense', '02:00 PM - 04:00 PM', '2022-03-01'),
 (4, 3, 0, 'Case for Family Law', '10:00 AM - 12:00 AM', '2022-03-02'),
-(5, 4, 1, 'Discussed divorce proceedings.', '10:00 AM', '2022-12-01'),
-(6, 5, 1, 'Adviced on criminal case.', '11:00 AM', '2022-12-02');
+(6, 5, 1, 'Adviced on criminal case.', '11:00 AM', '2022-12-02'),
+(4, 2, 0, 'intentional feeding', '10:00 AM - 12:00 AM', '2023-02-07'),
+(3, 2, 0, 'naus', '04:00 PM - 06:00 PM', '2023-02-14'),
+(2, 2, 0, 'nia', '10:00 AM - 12:00 AM', '2023-02-06');
 
 -- --------------------------------------------------------
 

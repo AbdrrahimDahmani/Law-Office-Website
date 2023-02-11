@@ -17,19 +17,17 @@
 </head>
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
-if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
-
 ?>
 
-    <body>
-        <?php
+<body>
+    <?php
         include('./assets/header.php');
         ?>
-        <div class="container">
-            <h1>Consultation <i class="fa-solid fa-handshake"></i></h1>
-            <div class="consultation-sections">
-                <div class="left-section">
-                    <?php
+    <div class="container">
+        <h1>Consultation <i class="fa-solid fa-handshake"></i></h1>
+        <div class="consultation-sections">
+            <div class="left-section">
+                <?php
                     if (isset($_POST['submit']) && isset($_POST['type']) && isset($_POST['detail']) && isset($_POST['date']) && isset($_POST['time'])) {
                         $idCon = $_POST['type'];
                         $detail = $_POST['detail'];
@@ -42,195 +40,191 @@ if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
                         }
                     }
                     ?>
-                    <form action="consultation.php" method="post" class="form">
-                        <h1 class="text-center">Form <i class="fa-solid fa-pen"></i></h1>
-                        <!-- Progress bar -->
-                        <div class="progressbar">
-                            <div class="progress" id="progress"></div>
-                            <div class="progress-step progress-step-active" data-title="Case"></div>
-                            <div class="progress-step" data-title="Details"></div>
-                            <div class="progress-step" data-title="Appointment"></div>
-                        </div>
+                <form action="consultation.php" method="post" class="form">
+                    <h1 class="text-center">Form <i class="fa-solid fa-pen"></i></h1>
+                    <!-- Progress bar -->
+                    <div class="progressbar">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-step progress-step-active" data-title="Case"></div>
+                        <div class="progress-step" data-title="Details"></div>
+                        <div class="progress-step" data-title="Appointment"></div>
+                    </div>
 
-                        <!-- Step 1 -->
-                        <div class="form-step form-step-active">
+                    <!-- Step 1 -->
+                    <div class="form-step form-step-active">
 
-                            <div class="input-group">
-                                <label for="phone">Case Type:</label>
-                                <select name="type" id="type">
-                                    <option value="">---</option>
-                                    <?php
+                        <div class="input-group">
+                            <label for="phone">Case Type:</label>
+                            <select name="type" id="type">
+                                <option value="">---</option>
+                                <?php
                                     $sql = 'SELECT * FROM `consultation`';
                                     $res = $conn->query($sql);
                                     while ($row = $res->fetch_assoc()) {
                                     ?>
-                                        <option value=<?php echo $row['idC']; ?>><?php echo $row['type']; ?></option>
-                                    <?php
+                                <option value=<?php echo $row['idC']; ?>><?php echo $row['type']; ?></option>
+                                <?php
                                     }
                                     ?>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="price">Price:</label>
-                                <input type="text" name="price" id="price" readonly value="">
-                            </div>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="price">Price:</label>
+                            <input type="text" name="price" id="price" readonly value="">
+                        </div>
 
-                            <div class="btns-group">
-                                <a href="#" class="btn btn-prev">Previous</a>
-                                <a href="#" class="btn btn-next">Next</a>
+                        <div class="btns-group">
+                            <a href="#" class="btn btn-prev">Previous</a>
+                            <a href="#" class="btn btn-next">Next</a>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="form-step">
+                        <div class="input-group">
+                            <label for="detail">Details About The Case:</label>
+                            <textarea name="detail" id="detail" rows="15"></textarea>
+                        </div>
+
+                        <div class="btns-group">
+                            <a href="#" class="btn btn-prev">Previous</a>
+                            <a href="#" class="btn btn-next">Next</a>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="form-step">
+                        <div class="input-group">
+                            <label for="date">Date of Appointment:</label>
+                            <input type="date" name="date" id="date" min=<?php echo date("Y-m-d"); ?> />
+                            <script>
+                            $(document).ready(function() {
+                                var today = new Date();
+                                var dd = String(today.getDate()).padStart(2, '0');
+                                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                var yyyy = today.getFullYear();
+                                today = yyyy + '-' + mm + '-' + dd;
+                                document.getElementById("date").value = today;
+                            });
+                            </script>
+                        </div>
+                        <div class="input-group">
+                            <label for="time">Appointment Time:</label>
+                            <select name="time" id="time">
+                                <option value="08:00 AM - 10:00 AM">08:00 AM - 10:00 AM</option>
+                                <option value="10:00 AM - 12:00 AM">10:00 AM - 12:00 AM</option>
+                                <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
+                                <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="price-duration">
+                            <div class="price">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                <span id="totalPrice">--</span>
+                                <span>DH</span>
+                            </div>
+                            <div class="duration">
+                                <i class="fa-solid fa-clock"></i>
+                                <span>2 hours</span>
                             </div>
                         </div>
-                        <!-- Step 2 -->
-                        <div class="form-step">
-                            <div class="input-group">
-                                <label for="detail">Details About The Case:</label>
-                                <textarea name="detail" id="detail" rows="15"></textarea>
-                            </div>
-
-                            <div class="btns-group">
-                                <a href="#" class="btn btn-prev">Previous</a>
-                                <a href="#" class="btn btn-next">Next</a>
-                            </div>
+                        <div class="btns-group">
+                            <a href="#" class="btn btn-prev">Previous</a>
+                            <input type="submit" name="submit" value="Submit" class="btn" />
                         </div>
-                        <!-- Step 3 -->
-                        <div class="form-step">
-                            <div class="input-group">
-                                <label for="date">Date of Appointment:</label>
-                                <input type="date" name="date" id="date" min=<?php echo date("Y-m-d"); ?> />
-                                <script>
-                                    $(document).ready(function() {
-                                        var today = new Date();
-                                        var dd = String(today.getDate()).padStart(2, '0');
-                                        var mm = String(today.getMonth() + 1).padStart(2, '0');
-                                        var yyyy = today.getFullYear();
-                                        today = yyyy + '-' + mm + '-' + dd;
-                                        document.getElementById("date").value = today;
-                                    });
-                                </script>
-                            </div>
-                            <div class="input-group">
-                                <label for="time">Appointment Time:</label>
-                                <select name="time" id="time">
-                                    <option value="08:00 AM - 10:00 AM">08:00 AM - 10:00 AM</option>
-                                    <option value="10:00 AM - 12:00 AM">10:00 AM - 12:00 AM</option>
-                                    <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
-                                    <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM</option>
-                                </select>
-                            </div>
-                            <div class="price-duration">
-                                <div class="price">
-                                    <i class="fa-solid fa-sack-dollar"></i>
-                                    <span id="totalPrice">--</span>
-                                    <span>DH</span>
-                                </div>
-                                <div class="duration">
-                                    <i class="fa-solid fa-clock"></i>
-                                    <span>2 hours</span>
-                                </div>
-                            </div>
-                            <div class="btns-group">
-                                <a href="#" class="btn btn-prev">Previous</a>
-                                <input type="submit" name="submit" value="Submit" class="btn" />
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+                </form>
 
-                </div>
-                <!-- 
+            </div>
+            <!-- 
             ?right
         -->
-                <div class="right-section">
-                    <div class="faq">
-                        <h2>
-                            FAQ
-                            <i class="fa-solid fa-question"></i>
-                        </h2>
-                        <!--faq1-->
-                        <div class="accordion">
-                            <div class="accordion-header">
-                                Faq-1
-                                <div class="close">
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="accordion-body">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since .
-                                </p>
+            <div class="right-section">
+                <div class="faq">
+                    <h2>
+                        FAQ
+                        <i class="fa-solid fa-question"></i>
+                    </h2>
+                    <!--faq1-->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Faq-1
+                            <div class="close">
+                                <span></span>
+                                <span></span>
                             </div>
                         </div>
-
-                        <!--faq2-->
-                        <div class="accordion">
-                            <div class="accordion-header">
-                                Faq-2
-                                <div class="close">
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="accordion-body">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since .
-                                </p>
-                            </div>
+                        <div class="accordion-body">
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry. Lorem Ipsum has been the industry's
+                                standard dummy text ever since .
+                            </p>
                         </div>
-
-                        <!--faq3-->
-                        <div class="accordion">
-                            <div class="accordion-header">
-                                Faq-3
-                                <div class="close">
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="accordion-body">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since .
-                                </p>
-                            </div>
-                        </div>
-
-                        <!--faq4-->
-                        <div class="accordion">
-                            <div class="accordion-header">
-                                Faq-4
-                                <div class="close">
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="accordion-body">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since .
-                                </p>
-                            </div>
-                        </div>
-                        <!--faq end-->
                     </div>
+
+                    <!--faq2-->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Faq-2
+                            <div class="close">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry. Lorem Ipsum has been the industry's
+                                standard dummy text ever since .
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--faq3-->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Faq-3
+                            <div class="close">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry. Lorem Ipsum has been the industry's
+                                standard dummy text ever since .
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--faq4-->
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Faq-4
+                            <div class="close">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry. Lorem Ipsum has been the industry's
+                                standard dummy text ever since .
+                            </p>
+                        </div>
+                    </div>
+                    <!--faq end-->
                 </div>
             </div>
         </div>
+    </div>
 
-        <?php
+    <?php
         include('./assets/footer.php');
         ?>
 
-    </body>
-<?php
-} else {
-    header("location:login.php");
-}
-?>
+</body>
+
 
 </html>

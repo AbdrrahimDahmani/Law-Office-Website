@@ -50,21 +50,7 @@
                     <input type="radio" name="male" id="dot-1" />
                     <input type="radio" name="female" id="dot-2" />
                     <input type="radio" name="none" id="dot-3" />
-                    <span class="gender-title">Sexe</span>
-                    <div class="category">
-                        <label for="dot-1">
-                            <span class="dot one"></span>
-                            <span class="gender">Men</span>
-                        </label>
-                        <label for="dot-2">
-                            <span class="dot two"></span>
-                            <span class="gender">Women</span>
-                        </label>
-                        <label for="dot-3">
-                            <span class="dot three"></span>
-                            <span class="gender">I Prefer Not To Say</span>
-                        </label>
-                    </div>
+
                 </div>
                 <div class="button">
                     <input type="submit" onclick="validMail(); validPhone(); validPsw();" value="SignUp" />
