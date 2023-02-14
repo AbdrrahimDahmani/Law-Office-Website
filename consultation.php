@@ -16,30 +16,30 @@
     <title>Consultation</title>
 </head>
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+include_once("./connection/connexion.php");
 ?>
 
 <body>
     <?php
-        include('./assets/header.php');
-        ?>
+    include('./assets/header.php');
+    ?>
     <div class="container">
         <h1>Consultation <i class="fa-solid fa-handshake"></i></h1>
         <div class="consultation-sections">
             <div class="left-section">
                 <?php
-                    if (isset($_POST['submit']) && isset($_POST['type']) && isset($_POST['detail']) && isset($_POST['date']) && isset($_POST['time'])) {
-                        $idCon = $_POST['type'];
-                        $detail = $_POST['detail'];
+                if (isset($_POST['submit']) && isset($_POST['type']) && isset($_POST['detail']) && isset($_POST['date']) && isset($_POST['time'])) {
+                    $idCon = $_POST['type'];
+                    $detail = $_POST['detail'];
 
-                        $query = "INSERT INTO `consultationclient`(`idCon`, `idCli`, `isDone`, `detail`, `time`, `consultationDate`) VALUES (" . $idCon . "," . $_SESSION['idC'] . ",0,'" . $detail . "','" . $_POST['time'] . "','" . $_POST['date'] . "')";
-                        if (!$conn->query($query)) {
-                            echo '<div style="color:red; text-align:center;">Error: Data cant be inserted.</div>';
-                        } else {
-                            header('location:consultationHistory.php');
-                        }
+                    $query = "INSERT INTO `consultationclient`(`idCon`, `idCli`, `isDone`, `detail`, `time`, `consultationDate`) VALUES (" . $idCon . "," . $_SESSION['idC'] . ",0,'" . $detail . "','" . $_POST['time'] . "','" . $_POST['date'] . "')";
+                    if (!$conn->query($query)) {
+                        echo '<div style="color:red; text-align:center;">Error: Data cant be inserted.</div>';
+                    } else {
+                        header('location:consultationHistory.php');
                     }
-                    ?>
+                }
+                ?>
                 <form action="consultation.php" method="post" class="form">
                     <h1 class="text-center">Form <i class="fa-solid fa-pen"></i></h1>
                     <!-- Progress bar -->
@@ -58,14 +58,14 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.ph
                             <select name="type" id="type">
                                 <option value="">---</option>
                                 <?php
-                                    $sql = 'SELECT * FROM `consultation`';
-                                    $res = $conn->query($sql);
-                                    while ($row = $res->fetch_assoc()) {
-                                    ?>
-                                <option value=<?php echo $row['idC']; ?>><?php echo $row['type']; ?></option>
+                                $sql = 'SELECT * FROM `consultation`';
+                                $res = $conn->query($sql);
+                                while ($row = $res->fetch_assoc()) {
+                                ?>
+                                    <option value=<?php echo $row['idC']; ?>><?php echo $row['type']; ?></option>
                                 <?php
-                                    }
-                                    ?>
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="input-group">
@@ -96,14 +96,14 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.ph
                             <label for="date">Date of Appointment:</label>
                             <input type="date" name="date" id="date" min=<?php echo date("Y-m-d"); ?> />
                             <script>
-                            $(document).ready(function() {
-                                var today = new Date();
-                                var dd = String(today.getDate()).padStart(2, '0');
-                                var mm = String(today.getMonth() + 1).padStart(2, '0');
-                                var yyyy = today.getFullYear();
-                                today = yyyy + '-' + mm + '-' + dd;
-                                document.getElementById("date").value = today;
-                            });
+                                $(document).ready(function() {
+                                    var today = new Date();
+                                    var dd = String(today.getDate()).padStart(2, '0');
+                                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                    var yyyy = today.getFullYear();
+                                    today = yyyy + '-' + mm + '-' + dd;
+                                    document.getElementById("date").value = today;
+                                });
                             </script>
                         </div>
                         <div class="input-group">
@@ -221,8 +221,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.ph
     </div>
 
     <?php
-        include('./assets/footer.php');
-        ?>
+    include('./assets/footer.php');
+    ?>
 
 </body>
 

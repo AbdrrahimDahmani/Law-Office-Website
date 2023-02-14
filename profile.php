@@ -12,7 +12,7 @@
     <title>Profile</title>
 </head>
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+include_once("./connection/connexion.php");
 if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] == true) {
 
 ?>

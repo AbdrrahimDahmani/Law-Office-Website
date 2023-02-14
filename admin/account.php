@@ -13,7 +13,10 @@
     <title>Update Admin</title>
 </head>
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+include_once($_SESSION['conPath']);
 if (isset($_SESSION['loggedAdmin']) && $_SESSION['loggedAdmin'] == true) {
 
 
@@ -22,7 +25,7 @@ if (isset($_SESSION['loggedAdmin']) && $_SESSION['loggedAdmin'] == true) {
     <body>
         <?php
 
-        include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/admin/assets/headerA.php");
+        include("./assets/headerA.php");
         ?>
 
         <section class="dashboard">

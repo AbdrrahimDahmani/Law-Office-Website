@@ -13,7 +13,7 @@
     <title>Update Lawyer</title>
 </head>
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+include_once("../../../connection/connexion.php");
 if (isset($_SESSION['loggedAdmin']) && $_SESSION['loggedAdmin'] == true) {
 
 
@@ -22,9 +22,10 @@ if (isset($_SESSION['loggedAdmin']) && $_SESSION['loggedAdmin'] == true) {
 <body>
     <?php
 
-        include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/admin/assets/headerA.php");
+        include("../../assets/headerA.php");
         ?>
     <section class="dashboard">
+
         <div class="dash-content">
             <div class="activity">
                 <div class="title">

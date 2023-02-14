@@ -25,7 +25,7 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <p class="copy-right">Copyright © <span>WEBSITENAME</span> 2022</p>
+                <p class="copy-right">Copyright © <span>LawyerUP</span> 2022-2023</p>
             </div>
             <div class="services">
                 <h2>Services</h2>

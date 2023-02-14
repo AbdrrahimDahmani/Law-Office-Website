@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+include_once("../../../connection/connexion.php");
 if (isset($_POST['submit']) && isset($_GET['idcon']) && isset($_GET['idcli'])) {
     $idcon = $_GET['idcon'];
     $idcli = $_GET['idcli'];

@@ -19,7 +19,10 @@
         <input type="submit" name="submit" value="Login">
     </form>
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    include_once("../connection/connexion.php");
     if (isset($_POST['submit']) && isset($_POST['mail']) && isset($_POST['psw'])) {
         $mail = $_POST['mail'];
         $psw = $_POST['psw'];
@@ -36,13 +39,17 @@
         $result = $conn->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
+            if (!isset($_SESSION['conPath'])) {
+                $_SESSION['conPath'] = realpath("../connection/connexion.php");
+            }
             $_SESSION['adminName'] = $row['nomA'] . " " . $row['prenomA'];
             $_SESSION['isLawyer'] = true;
             $_SESSION['loggedAdmin'] = true;
+
             header("location:index.php");
         } else {
     ?>
-    <script defer src="./js/login.js"></script>
+            <script defer src="./js/login.js"></script>
     <?php
         }
     }

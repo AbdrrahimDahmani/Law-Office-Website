@@ -1,6 +1,8 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
-
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+include_once($_SESSION['conPath']);
 if (isset($_POST['submit'])) {
     if (isset($_POST['psw']) && isset($_POST['cpsw']) && $_POST['psw'] == $_POST['cpsw']) {
         $query = "UPDATE `agenceinfo` SET 

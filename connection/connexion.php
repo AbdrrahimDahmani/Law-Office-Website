@@ -6,7 +6,8 @@ $host = "localhost";
 $username = "root";
 $password = "";
 $dbname = "lawyerdb";
-
+$path = new SplFileInfo(__FILE__);
+$_SESSION['conPath'] = $path->getRealPath();
 $conn = new mysqli($host, $username, $password, $dbname);
 
 if ($conn->connect_error) {

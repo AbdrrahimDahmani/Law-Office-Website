@@ -13,7 +13,7 @@
     <title>Consultation</title>
 </head>
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+include_once("../../../connection/connexion.php");
 if (isset($_SESSION['loggedAdmin']) && $_SESSION['loggedAdmin'] == true) {
 
 
@@ -22,16 +22,28 @@ if (isset($_SESSION['loggedAdmin']) && $_SESSION['loggedAdmin'] == true) {
 <body>
     <?php
 
-        include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/admin/assets/headerA.php");
+        include("../../assets/headerA.php");
         ?>
     <!--
       here import side bar
     -->
+
     <section class="dashboard">
         <!--
         here import top bar
       -->
-
+        <div class="top">
+            <i class="fa-solid fa-bars sidebar-toggle"></i>
+            <?php
+                $sql = "SELECT * FROM `agenceinfo`;";
+                $res = $conn->query($sql);
+                $row = $res->fetch_assoc();
+                ?>
+            <div class="avatar">
+                <p><?php echo $_SESSION['adminName']; ?></p>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
         <div class="dash-content">
             <div class="activity">
                 <div class="title">

@@ -1,5 +1,8 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+include($_SESSION['conPath']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +23,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
                 <i class="fa-solid fa-gavel"></i>
             </div>
 
-            <span class="logo_name">Logo</span>
+            <span class="logo_name">LawyerUP</span>
         </div>
 
         <div class="menu-items">
@@ -57,12 +60,12 @@ include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
 
 
                 ?>
-                <li>
-                    <a href="https://localhost/lawyerProject/admin/account.php">
-                        <i class="fa-solid fa-gear"></i>
-                        <span class="link-name">Account</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="https://localhost/lawyerProject/admin/account.php">
+                            <i class="fa-solid fa-gear"></i>
+                            <span class="link-name">Account</span>
+                        </a>
+                    </li>
                 <?php
                 } else if (isset($_SESSION['isLawyer']) && $_SESSION['isLawyer'] == false) {
                 }
@@ -73,11 +76,11 @@ include($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
                         <span class="link-name">Logout</span>
                     </a>
                     <?php
-                        if (isset($_GET['logout']) && $_GET['logout'] == true) {
-                            session_destroy();
-                            header("location:https://localhost/lawyerProject/admin/login.php");
-                        }
-                        ?>
+                    if (isset($_GET['logout']) && $_GET['logout'] == true) {
+                        session_destroy();
+                        header("location:https://localhost/lawyerProject/admin/login.php");
+                    }
+                    ?>
                 </li>
 
                 <li class="mode">

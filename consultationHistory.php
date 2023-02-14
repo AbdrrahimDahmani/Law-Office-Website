@@ -12,7 +12,7 @@
 </head>
 
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.php");
+include_once("./connection/connexion.php");
 ?>
 
 <body>
@@ -50,106 +50,104 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/lawyerProject/connection/connexion.ph
             $resLaw = $conn->query($queryLawy);
             while ($row = $res->fetch_assoc()) {
             ?>
-            <div class="consultation-container">
-                <button class="print-btn">
-                    print
-                    <i class="fa-solid fa-print"></i>
-                </button>
-                <div class="consultation">
-                    <div class="left-section">
-                        <?php
+                <div class="consultation-container">
+                    <button class="print-btn">
+                        print
+                        <i class="fa-solid fa-print"></i>
+                    </button>
+                    <div class="consultation">
+                        <div class="left-section">
+                            <?php
 
                             if ($resLaw->num_rows > 0) {
                                 while ($rowLaw = $resLaw->fetch_assoc()) {
 
                             ?>
-                        <div class="lawyer-infos">
-                            <h2>lawyer</h2>
-                            <div class="name">
-                                <span>Name: </span>
-                                <p><?php echo $rowLaw['nomA'] . ' ' . $rowLaw['prenomA']; ?></p>
-                            </div>
-                            <div class="prof">
-                                <span>profession:</span>
-                                <p><?php echo $rowLaw['specialite']; ?></p>
-                            </div>
-                        </div>
-                        <?php
+                                    <div class="lawyer-infos">
+                                        <h2>lawyer</h2>
+                                        <div class="name">
+                                            <span>Name: </span>
+                                            <p><?php echo $rowLaw['nomA'] . ' ' . $rowLaw['prenomA']; ?></p>
+                                        </div>
+                                        <div class="prof">
+                                            <span>profession:</span>
+                                            <p><?php echo $rowLaw['specialite']; ?></p>
+                                        </div>
+                                    </div>
+                                <?php
                                 }
                             } else {
                                 ?>
-                        <div class="lawyer-infos">
-                            <h2>lawyer</h2>
-                            <div class="name">
-                                <span>Name: </span>
-                                <p>Pending..</p>
-                            </div>
-                            <div class="prof">
-                                <span>profession:</span>
-                                <p>Pending..</p>
-                            </div>
-                        </div>
-                        <?php
+                                <div class="lawyer-infos">
+                                    <h2>lawyer</h2>
+                                    <div class="name">
+                                        <span>Name: </span>
+                                        <p>Pending..</p>
+                                    </div>
+                                    <div class="prof">
+                                        <span>profession:</span>
+                                        <p>Pending..</p>
+                                    </div>
+                                </div>
+                            <?php
                             }
                             ?>
 
-                        <div class="case-infos">
-                            <h2>Type</h2>
-                            <div class="case">
-                                <span>Type: </span>
-                                <p>
-                                    <?php echo $row['type']; ?>.
-                                </p>
-                            </div>
-                            <div class="prof">
-                                <span>Detail:</span>
-                                <p>
-                                    <?php echo $row['detail']; ?>
-                                </p>
+                            <div class="case-infos">
+                                <h2>Type</h2>
+                                <div class="case">
+                                    <span>Type: </span>
+                                    <p>
+                                        <?php echo $row['type']; ?>.
+                                    </p>
+                                </div>
+                                <div class="prof">
+                                    <span>Detail:</span>
+                                    <p>
+                                        <?php echo $row['detail']; ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="right-section">
-                        <div class="rest-infos">
-                            <h2>rdv:</h2>
-                            <div class="full-infos">
-                                <div class="price">
-                                    <span>Price:</span>
-                                    <p><?php echo $row['prix']; ?> DH</p>
-                                </div>
-                                <div class="date">
-                                    <span>Date:</span>
-                                    <p><?php echo $row['consultationDate']; ?></p>
-                                </div>
-                                <div class="duration">
-                                    <span>Duration:</span>
-                                    <p><?php echo $row['time']; ?></p>
-                                </div>
-                                <div class="status">
-                                    <span>Status:</span>
-                                    <div class="status-icon">
-                                        <?php
+                        <div class="right-section">
+                            <div class="rest-infos">
+                                <h2>rdv:</h2>
+                                <div class="full-infos">
+                                    <div class="price">
+                                        <span>Price:</span>
+                                        <p><?php echo $row['prix']; ?> DH</p>
+                                    </div>
+                                    <div class="date">
+                                        <span>Date:</span>
+                                        <p><?php echo $row['consultationDate']; ?></p>
+                                    </div>
+                                    <div class="duration">
+                                        <span>Duration:</span>
+                                        <p><?php echo $row['time']; ?></p>
+                                    </div>
+                                    <div class="status">
+                                        <span>Status:</span>
+                                        <div class="status-icon">
+                                            <?php
                                             if ($row['isDone'] == false) {
                                             ?>
-                                        <p>In Process</p>
-                                        <i class="fa-solid fa-arrows-rotate"
-                                            style="font-size: 1.3rem;color: rgb(187, 50, 50);"></i>
-                                        <?php
+                                                <p>In Process</p>
+                                                <i class="fa-solid fa-arrows-rotate" style="font-size: 1.3rem;color: rgb(187, 50, 50);"></i>
+                                            <?php
                                             } else {
                                             ?>
-                                        <p style="color:rgb(25, 135, 84);">Done</p>
-                                        <i class="fa-solid fa-check"
-                                            style="font-size: 1.3rem;color: rgb(25, 135, 84) ;"></i>
-                                        <?php
+                                                <p style="color:rgb(25, 135, 84);">Done</p>
+                                                <i class="fa-solid fa-check" style="font-size: 1.3rem;color: rgb(25, 135, 84) ;"></i>
+                                            <?php
                                             }
                                             ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <?php
             }
             ?>
